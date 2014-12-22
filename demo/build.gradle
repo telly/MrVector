@@ -1,0 +1,27 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+  compile project(':library')
+  compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_VERSION}@aar"
+}
+
+android {
+  compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+  buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+  defaultConfig {
+    applicationId "${project.GROUP}.${project.POM_ARTIFACT_ID}.demo"
+    minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+    targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+    versionName project.VERSION_NAME
+    versionCode Integer.parseInt(project.VERSION_CODE)
+    buildConfigField "String", "ABOUT_URL", "\"${project.POM_URL}\""
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+    }
+  }
+}

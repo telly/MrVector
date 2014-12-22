@@ -1,0 +1,7 @@
+<resources>
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+  <dimen name="simple_vector_width">52dp</dimen>
+  <dimen name="simple_vector_height">20dp</dimen>
+  <dimen name="logo_side">69dp</dimen>
+</resources>

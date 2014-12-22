@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="simple_vector_viewport_width">520</integer>
+  <integer name="simple_vector_viewport_height">200</integer>
+  <integer name="simple_vector_stroke_width">5</integer>
+  <integer name="logo_viewport_side">69</integer>
+</resources>
