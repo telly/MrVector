@@ -22,7 +22,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.Log;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.graphics.PorterDuff.Mode;
 import static android.graphics.PorterDuff.Mode.SRC_IN;
@@ -41,20 +48,25 @@ public class Utils {
   static final Mode DEFAULT_TINT_MODE = SRC_IN;
   static final boolean LOLLIPOP_PLUS = SDK_INT >= LOLLIPOP;
 
-  public static <T> T tryInvoke(Object target, String methodName, Object... args) {
-    final int argsCount = args == null ? 0 : args.length;
-    Class<?>[] argTypes = new Class<?>[argsCount];
-    for (int i = 0; i < argsCount; i++) {
-      argTypes[i] = args[i].getClass();
-    }
+  static Map<String, Method> sCachedMethods = new HashMap<>();
+  static Class[][] sCachedArgsTypes = {
+    {int.class}, {PorterDuff.Mode.class}, {}
+  };
 
-    return tryInvoke(target, methodName, argTypes, args);
-  }
-
+  @SuppressWarnings("unchecked")
   public static <T> T tryInvoke(Object target, String methodName, Class<?>[] argTypes,
                          Object... args) {
+
     try {
-      return (T) target.getClass().getDeclaredMethod(methodName, argTypes).invoke(target, args);
+      Method method = sCachedMethods.get(methodName);
+      if(method != null){
+          return (T) method.invoke(target, args);
+      }
+
+      method = target.getClass().getDeclaredMethod(methodName, argTypes);
+      sCachedMethods.put(methodName, method);
+
+      return (T) method.invoke(target, args);
     } catch (Exception pokemon) {
       Log.e(LOGTAG, "Unable to invoke " + methodName + " on " + target, pokemon);
     }
@@ -63,7 +75,7 @@ public class Utils {
   }
 
   static int getLayoutDirection(Drawable drawable) {
-    final Integer layoutDirection = tryInvoke(drawable, "getLayoutDirection", (Object[])null);
+    final Integer layoutDirection = tryInvoke(drawable, "getLayoutDirection", sCachedArgsTypes[2]);
     return layoutDirection == null ? LTR : layoutDirection.intValue();
   }
 
@@ -80,8 +92,14 @@ public class Utils {
       case 9: return Mode.SRC_ATOP;
       case 14: return Mode.MULTIPLY;
       case 15: return Mode.SCREEN;
-      case 16: return Mode.ADD;
-      default: return defaultMode;
+
+      case 16:
+          if(Build.VERSION.SDK_INT > 11) {
+              return Mode.ADD;
+          }
+
+      default:
+          return defaultMode;
     }
   }
 
@@ -96,12 +114,13 @@ public class Utils {
     }
 
     final int color = tint.getColorForState(drawable.getState(), Color.TRANSPARENT);
+
     if (tintFilter == null || !LOLLIPOP_PLUS) { // TODO worth caching them?
       return new PorterDuffColorFilter(color, tintMode);
     }
 
-    tryInvoke(tintFilter, "setColor", color);
-    tryInvoke(tintFilter, "setMode", tintMode);
+    tryInvoke(tintFilter, "setColor", sCachedArgsTypes[0], color);
+    tryInvoke(tintFilter, "setMode", sCachedArgsTypes[1],tintMode);
     return tintFilter;
   }
 
