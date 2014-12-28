@@ -25,7 +25,7 @@ Drawable drawable = MrVector.inflate(getResources(), R.drawable.vector_android);
 
 Unfortunately due some inflate weirdness (able to read some correctly but not others) for now (will fix promise) you'll have to duplicate (sucks I know) all your `android:` attributes, in example:
 
-
+**Note**: you must put `auto` attributes before `android` attributes ([See #5](https://github.com/telly/MrVector/issues/5))
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
