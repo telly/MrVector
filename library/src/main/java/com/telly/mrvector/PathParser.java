@@ -18,7 +18,6 @@ import android.graphics.Path;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 
@@ -189,7 +188,7 @@ public class PathParser {
           startPosition = endPosition + 1;
         }
       }
-      return Arrays.copyOf(results, count);
+      return Utils.copyOf(results, count);
     } catch (NumberFormatException e) {
       Log.e(LOGTAG, "error in parsing \"" + s + "\"");
       throw e;
@@ -247,7 +246,7 @@ public class PathParser {
 
     private PathDataNode(PathDataNode n) {
       mType = n.mType;
-      mParams = Arrays.copyOf(n.mParams, n.mParams.length);
+      mParams = Utils.copyOf(n.mParams, n.mParams.length);
     }
 
     /**

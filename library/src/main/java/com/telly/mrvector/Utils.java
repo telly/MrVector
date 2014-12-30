@@ -27,8 +27,6 @@ import android.support.v4.util.SimpleArrayMap;
 import android.util.Log;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
 
 import static android.graphics.PorterDuff.Mode;
 import static android.graphics.PorterDuff.Mode.SRC_IN;
@@ -87,6 +85,7 @@ public class Utils {
    *
    * @hide
    */
+  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
   static Mode parseTintMode(int value, Mode defaultMode) {
     switch (value) {
       case 3: return Mode.SRC_OVER;
@@ -132,5 +131,27 @@ public class Utils {
       return a.getChangingConfigurations();
     }
     return 0;
+  }
+
+  static float[] copyOf(float[] original, int newLength) {
+    if (newLength < 0) {
+      throw new NegativeArraySizeException(Integer.toString(newLength));
+    }
+    return copyOfRange(original, 0, newLength);
+  }
+
+  static float[] copyOfRange(float[] original, int start, int end) {
+    if (start > end) {
+      throw new IllegalArgumentException();
+    }
+    int originalLength = original.length;
+    if (start < 0 || start > originalLength) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    int resultLength = end - start;
+    int copyLength = Math.min(resultLength, originalLength - start);
+    float[] result = new float[resultLength];
+    System.arraycopy(original, start, result, 0, copyLength);
+    return result;
   }
 }

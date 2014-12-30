@@ -2,7 +2,7 @@ Mr. Vector
 ==========
 ![Mr. Vector](http://i.imgur.com/ucFr5T7.png)
 
-AKA VectorDrawableCompat: A 14+ backport of [VectorDrawable](https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html).
+AKA VectorDrawableCompat: A 7+ backport of [VectorDrawable](https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html).
 
 ### Demo
 
@@ -12,10 +12,10 @@ AKA VectorDrawableCompat: A 14+ backport of [VectorDrawable](https://developer.a
 
 ### Usage
 
-See demo, at this point latest version is `0.1.0`
+See demo, at this point latest version looks like
 
 ```groovy
-compile 'com.telly:mrvector:(insert latest version)'
+compile 'com.telly:mrvector:0.2.0'
 ```
 
 ### Basic inflate
