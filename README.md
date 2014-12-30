@@ -2,7 +2,7 @@ Mr. Vector
 ==========
 ![Mr. Vector](http://i.imgur.com/ucFr5T7.png)
 
-AKA VectorDrawableCompat: A 14+ backport of [VectorDrawable](https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html).
+AKA VectorDrawableCompat: A 7+ backport of [VectorDrawable](https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html).
 
 ### Demo
 
