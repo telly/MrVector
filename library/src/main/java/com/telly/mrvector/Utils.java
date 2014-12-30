@@ -23,17 +23,17 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import android.support.v4.util.SimpleArrayMap;
 import android.util.Log;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import static android.graphics.PorterDuff.Mode;
 import static android.graphics.PorterDuff.Mode.SRC_IN;
 import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.HONEYCOMB;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 import static android.util.LayoutDirection.LTR;
 import static com.telly.mrvector.VectorDrawable.LOGTAG;
@@ -47,11 +47,13 @@ public class Utils {
    */
   static final Mode DEFAULT_TINT_MODE = SRC_IN;
   static final boolean LOLLIPOP_PLUS = SDK_INT >= LOLLIPOP;
+  static final boolean HONEYCOMB_PLUS = SDK_INT >= HONEYCOMB;
 
-  static Map<String, Method> sCachedMethods = new HashMap<>();
-  static Class[][] sCachedArgsTypes = {
-    {int.class}, {PorterDuff.Mode.class}, {}
-  };
+  static SimpleArrayMap<String, Method> sCachedMethods = new SimpleArrayMap<>();
+
+  final static Class[] INT_ARG = {int.class};
+  final static Class[] MODE_ARG = {Mode.class};
+  final static Class[] EMPTY_ARG = {};
 
   @SuppressWarnings("unchecked")
   public static <T> T tryInvoke(Object target, String methodName, Class<?>[] argTypes,
@@ -60,7 +62,7 @@ public class Utils {
     try {
       Method method = sCachedMethods.get(methodName);
       if(method != null){
-          return (T) method.invoke(target, args);
+        return (T) method.invoke(target, args);
       }
 
       method = target.getClass().getDeclaredMethod(methodName, argTypes);
@@ -75,7 +77,7 @@ public class Utils {
   }
 
   static int getLayoutDirection(Drawable drawable) {
-    final Integer layoutDirection = tryInvoke(drawable, "getLayoutDirection", sCachedArgsTypes[2]);
+    final Integer layoutDirection = tryInvoke(drawable, "getLayoutDirection", EMPTY_ARG);
     return layoutDirection == null ? LTR : layoutDirection.intValue();
   }
 
@@ -94,12 +96,12 @@ public class Utils {
       case 15: return Mode.SCREEN;
 
       case 16:
-          if(Build.VERSION.SDK_INT > 11) {
-              return Mode.ADD;
-          }
+        if(HONEYCOMB_PLUS) {
+          return Mode.ADD;
+        }
 
       default:
-          return defaultMode;
+        return defaultMode;
     }
   }
 
@@ -119,8 +121,8 @@ public class Utils {
       return new PorterDuffColorFilter(color, tintMode);
     }
 
-    tryInvoke(tintFilter, "setColor", sCachedArgsTypes[0], color);
-    tryInvoke(tintFilter, "setMode", sCachedArgsTypes[1],tintMode);
+    tryInvoke(tintFilter, "setColor", INT_ARG, color);
+    tryInvoke(tintFilter, "setMode", MODE_ARG, tintMode);
     return tintFilter;
   }
 
