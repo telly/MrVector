@@ -110,6 +110,10 @@ On the long run, it would be nice to see (but no promises):
 - [ ] Additional SVG support (e.g. using [svg-android](https://code.google.com/p/svg-android/) or [svgandroid](https://code.google.com/p/androidsvg/)).
 - [ ] SVG animation support.
 
+###Applications using Mr.Vector:
+
+[WatchMe](https://github.com/ozodrukh/Mover)
+
 ### License & About
 
 See LICENSE file, logo built from [opoloo/androidicons](https://github.com/opoloo/androidicons).
