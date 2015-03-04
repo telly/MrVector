@@ -5,7 +5,7 @@
         tools:targetApi="21"
 
         auto:mvWidth="@dimen/logo_side"
-        auto:height="@dimen/logo_side"
+        auto:mvHeight="@dimen/logo_side"
         auto:mvViewportWidth="@integer/logo_viewport_side"
         auto:mvViewportHeight="@integer/logo_viewport_side"
 
