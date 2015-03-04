@@ -15,10 +15,10 @@
         xmlns:auto="http://schemas.android.com/apk/res-auto"
         tools:targetApi="21"
 
-        auto:width="@dimen/simple_vector_width"
-        auto:height="@dimen/simple_vector_height"
-        auto:viewportWidth="@integer/simple_vector_viewport_width"
-        auto:viewportHeight="@integer/simple_vector_viewport_height"
+        auto:mvWidth="@dimen/simple_vector_width"
+        auto:mvHeight="@dimen/simple_vector_height"
+        auto:mvViewportWidth="@integer/simple_vector_viewport_width"
+        auto:mvViewportHeight="@integer/simple_vector_viewport_height"
 
         android:width="@dimen/simple_vector_width"
         android:height="@dimen/simple_vector_height"
@@ -27,9 +27,9 @@
     >
 
   <path
-      auto:strokeColor="@color/simple_vector_stroke_color"
-      auto:strokeWidth="@integer/simple_vector_stroke_width"
-      auto:pathData="@string/simple_vector_path_data"
+      auto:mvStrokeColor="@color/simple_vector_stroke_color"
+      auto:mvStrokeWidth="@integer/simple_vector_stroke_width"
+      auto:mvPathData="@string/simple_vector_path_data"
 
       android:strokeColor="@color/simple_vector_stroke_color"
       android:strokeWidth="@integer/simple_vector_stroke_width"

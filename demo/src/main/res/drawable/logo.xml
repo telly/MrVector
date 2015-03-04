@@ -4,10 +4,10 @@
         xmlns:auto="http://schemas.android.com/apk/res-auto"
         tools:targetApi="21"
 
-        auto:width="@dimen/logo_side"
+        auto:mvWidth="@dimen/logo_side"
         auto:height="@dimen/logo_side"
-        auto:viewportWidth="@integer/logo_viewport_side"
-        auto:viewportHeight="@integer/logo_viewport_side"
+        auto:mvViewportWidth="@integer/logo_viewport_side"
+        auto:mvViewportHeight="@integer/logo_viewport_side"
 
         android:width="@dimen/logo_side"
         android:height="@dimen/logo_side"
@@ -17,15 +17,15 @@
 
   <group>
     <path
-        auto:fillColor="@color/logo_fill_color"
-        auto:pathData="@string/logo_path_1"
+        auto:mvFillColor="@color/logo_fill_color"
+        auto:mvPathData="@string/logo_path_1"
 
         android:fillColor="@color/logo_fill_color"
         android:pathData="@string/logo_path_1"
         />
     <path
-        auto:fillColor="@color/logo_fill_color"
-        auto:pathData="@string/logo_path_2"
+        auto:mvFillColor="@color/logo_fill_color"
+        auto:mvPathData="@string/logo_path_2"
 
         android:fillColor="@color/logo_fill_color"
         android:pathData="@string/logo_path_2"
