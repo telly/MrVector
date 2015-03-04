@@ -13,55 +13,55 @@
 <resources>
   <!-- If set, specifies the color to apply to the drawable as a tint. By default,
             no tint is applied. May be a color state list. -->
-  <attr name="tint" format="color" />
+  <attr name="mv_tint" format="color" />
   <!-- When a tint color is set, specifies its Porter-Duff blending mode. The
        default value is src_in, which treats the drawable as an alpha mask. -->
-  <attr name="tintMode">
+  <attr name="mv_tintMode">
     <!-- The tint is drawn on top of the drawable.
          [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
-    <enum name="src_over" value="3" />
+    <enum name="mv_src_over" value="3" />
     <!-- The tint is masked by the alpha channel of the drawable. The drawable’s
          color channels are thrown out. [Sa * Da, Sc * Da] -->
-    <enum name="src_in" value="5" />
+    <enum name="mv_src_in" value="5" />
     <!-- The tint is drawn above the drawable, but with the drawable’s alpha
          channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
-    <enum name="src_atop" value="9" />
+    <enum name="mv_src_atop" value="9" />
     <!-- Multiplies the color and alpha channels of the drawable with those of
          the tint. [Sa * Da, Sc * Dc] -->
-    <enum name="multiply" value="14" />
+    <enum name="mv_multiply" value="14" />
     <!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
-    <enum name="screen" value="15" />
+    <enum name="mv_screen" value="15" />
     <!-- Combines the tint and drawable color and alpha channels, clamping the
          result to valid color values. Saturate(S + D) -->
-    <enum name="add" value="16" />
+    <enum name="mv_add" value="16" />
   </attr>
   <!-- Animation to use on each child. -->
-  <attr name="animation" format="reference" />
+  <attr name="mv_animation" format="reference" />
   <!-- alpha property of the view, as a value between 0 (completely transparent) and 1
              (completely opaque). -->
-  <attr name="alpha" format="float" />
-  <attr name="pivotX" format="float|fraction" />
-  <attr name="pivotY" format="float|fraction" />
+  <attr name="mv_alpha" format="float" />
+  <attr name="mv_pivotX" format="float|fraction" />
+  <attr name="mv_pivotY" format="float|fraction" />
   <!-- rotation of the view, in degrees. -->
-  <attr name="rotation" format="float" />
+  <attr name="mv_rotation" format="float" />
 
   <!-- scale of the view in the x direction. -->
-  <attr name="scaleX" format="float" />
+  <attr name="mv_scaleX" format="float" />
 
   <!-- scale of the view in the y direction. -->
-  <attr name="scaleY" format="float" />
+  <attr name="mv_scaleY" format="float" />
   <!-- Makes the TextView be exactly this many pixels tall.
              You could get the same effect by specifying this number in the
              layout parameters. -->
-  <attr name="height" format="dimension" />
+  <attr name="mv_height" format="dimension" />
   <!-- Makes the TextView be exactly this many pixels wide.
              You could get the same effect by specifying this number in the
              layout parameters. -->
-  <attr name="width" format="dimension" />
+  <attr name="mv_width" format="dimension" />
   <!-- A unique name for the given item.  This must use a Java-style naming
        convention to ensure the name is unique, for example
        "com.mycompany.MyName". -->
-  <attr name="name" format="string" />
+  <attr name="mv_name" format="string" />
 
   <!-- ========================== -->
   <!--   VectorDrawable class   -->
@@ -72,94 +72,94 @@
   <declare-styleable name="VectorDrawable">
     <!-- If set, specifies the color to apply to the drawable as a tint. By default,
          no tint is applied. May be a color state list. -->
-    <attr name="tint" />
+    <attr name="mv_tint" />
     <!-- When a tint color is set, specifies its Porter-Duff blending mode. The
          default value is src_in, which treats the drawable as an alpha mask. -->
-    <attr name="tintMode" />
+    <attr name="mv_tintMode" />
     <!-- Indicates if the drawable needs to be mirrored when its layout direction is
          RTL (right-to-left). -->
-    <attr name="autoMirrored" format="boolean" />
+    <attr name="mv_autoMirrored" format="boolean" />
     <!-- The intrinsic width of the Vector Drawable. -->
-    <attr name="width" />
+    <attr name="mv_width" />
     <!-- The intrinsic height of the Vector Drawable. -->
-    <attr name="height" />
+    <attr name="mv_height" />
     <!-- The width of the canvas the drawing is on. -->
-    <attr name="viewportWidth" format="float"/>
+    <attr name="mv_viewportWidth" format="float"/>
     <!-- The height of the canvas the drawing is on. -->
-    <attr name="viewportHeight" format="float"/>
+    <attr name="mv_viewportHeight" format="float"/>
     <!-- The name of this vector drawable -->
-    <attr name="name" />
+    <attr name="mv_name" />
     <!-- The opacity of the whole vector drawable, as a value between 0
          (completely transparent) and 1 (completely opaque). -->
-    <attr name="alpha" />
+    <attr name="mv_alpha" />
   </declare-styleable>
 
   <!-- Defines the group used in VectorDrawables. -->
   <declare-styleable name="VectorDrawableGroup">
     <!-- The name of this group -->
-    <attr name="name" />
+    <attr name="mv_name" />
     <!-- The amount to rotate the group -->
-    <attr name="rotation" />
+    <attr name="mv_rotation" />
     <!-- The X coordinate of the center of rotation of a group -->
-    <attr name="pivotX" />
+    <attr name="mv_pivotX" />
     <!-- The Y coordinate of the center of rotation of a group -->
-    <attr name="pivotY" />
+    <attr name="mv_pivotY" />
     <!-- The amount to translate the group on X coordinate -->
-    <attr name="translateX" format="float"/>
+    <attr name="mv_translateX" format="float"/>
     <!-- The amount to translate the group on Y coordinate -->
-    <attr name="translateY" format="float"/>
+    <attr name="mv_translateY" format="float"/>
     <!-- The amount to scale the group on X coordinate -->
-    <attr name="scaleX" />
+    <attr name="mv_scaleX" />
     <!-- The amount to scale the group on X coordinate -->
-    <attr name="scaleY" />
+    <attr name="mv_scaleY" />
   </declare-styleable>
 
   <!-- Defines the path used in VectorDrawables. -->
   <declare-styleable name="VectorDrawablePath">
     <!-- The name of this path -->
-    <attr name="name" />
+    <attr name="mv_name" />
     <!-- The width a path stroke -->
-    <attr name="strokeWidth" format="float" />
+    <attr name="mv_strokeWidth" format="float" />
     <!-- The color to stroke the path if not defined implies no stroke-->
-    <attr name="strokeColor" format="color" />
+    <attr name="mv_strokeColor" format="color" />
     <!-- The opacity of a path stroke, as a value between 0 (completely transparent)
          and 1 (completely opaque) -->
-    <attr name="strokeAlpha" format="float" />
+    <attr name="mv_strokeAlpha" format="float" />
     <!-- The color to fill the path if not defined implies no fill-->
-    <attr name="fillColor" format="color" />
+    <attr name="mv_fillColor" format="color" />
     <!-- The alpha of the path fill, as a value between 0 (completely transparent)
          and 1 (completely opaque)-->
-    <attr name="fillAlpha" format="float" />
+    <attr name="mv_fillAlpha" format="float" />
     <!-- The specification of the operations that define the path  -->
-    <attr name="pathData" format="string" />
+    <attr name="mv_pathData" format="string" />
     <!-- The fraction of the path to trim from the start from 0 to 1 -->
-    <attr name="trimPathStart" format="float" />
+    <attr name="mv_trimPathStart" format="float" />
     <!-- The fraction of the path to trim from the end from 0 to 1  -->
-    <attr name="trimPathEnd" format="float" />
+    <attr name="mv_trimPathEnd" format="float" />
     <!-- Shift trim region (allows visible region to include the start and end) from 0 to 1  -->
-    <attr name="trimPathOffset" format="float" />
+    <attr name="mv_trimPathOffset" format="float" />
     <!-- sets the linecap for a stroked path -->
-    <attr name="strokeLineCap" format="enum">
-      <enum name="butt" value="0"/>
-      <enum name="round" value="1"/>
-      <enum name="square" value="2"/>
+    <attr name="mv_strokeLineCap" format="enum">
+      <enum name="mv_butt" value="0"/>
+      <enum name="mv_round" value="1"/>
+      <enum name="mv_square" value="2"/>
     </attr>
     <!-- sets the lineJoin for a stroked path -->
-    <attr name="strokeLineJoin" format="enum">
-      <enum name="miter" value="0"/>
-      <enum name="round" value="1"/>
-      <enum name="bevel" value="2"/>
+    <attr name="mv_strokeLineJoin" format="enum">
+      <enum name="mv_miter" value="0"/>
+      <enum name="mv_round" value="1"/>
+      <enum name="mv_bevel" value="2"/>
     </attr>
     <!-- sets the Miter limit for a stroked path -->
-    <attr name="strokeMiterLimit" format="float"/>
+    <attr name="mv_strokeMiterLimit" format="float"/>
   </declare-styleable>
 
   <!-- Defines the clip path used in VectorDrawables. -->
   <declare-styleable name="VectorDrawableClipPath">
     <!-- The Name of this path -->
-    <attr name="name" />
+    <attr name="mv_name" />
     <!-- The specification of the operations that define the path  -->
-    <attr name="pathData"/>
+    <attr name="mv_pathData"/>
   </declare-styleable>
 
   <!-- ========================== -->
@@ -170,14 +170,14 @@
   <!-- Define the AnimatedVectorDrawable. -->
   <declare-styleable name="AnimatedVectorDrawable">
     <!-- The static vector drawable. -->
-    <attr name="drawable" format="reference" />
+    <attr name="mv_drawable" format="reference" />
   </declare-styleable>
 
   <!-- Defines the target used in the AnimatedVectorDrawable. -->
   <declare-styleable name="AnimatedVectorDrawableTarget">
     <!-- The name of the target path, group or vector drawable -->
-    <attr name="name" />
+    <attr name="mv_name" />
     <!-- The animation for the target path, group or vector drawable -->
-    <attr name="animation" />
+    <attr name="mv_animation" />
   </declare-styleable>
 </resources>
