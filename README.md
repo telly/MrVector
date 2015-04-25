@@ -1,3 +1,6 @@
+###`@Deprecated`
+Unfortunatenly this library is no longer maintained, we encourage you to use [first party VectorDrawableCompat coming soon to support library](https://android.googlesource.com/platform/frameworks/support/+/master/v7/vectordrawable/).
+
 Mr. Vector
 ==========
 ![Mr. Vector](http://i.imgur.com/ucFr5T7.png)
