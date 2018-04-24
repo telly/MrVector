@@ -18,7 +18,7 @@ AKA VectorDrawableCompat: A 7+ backport of [VectorDrawable](https://developer.an
 See demo, at this point latest version looks like
 
 ```groovy
-compile 'com.telly:mrvector:0.2.0'
+implementation 'com.telly:mrvector:0.2.0'
 ```
 
 ### Basic inflate
